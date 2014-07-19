@@ -52,14 +52,18 @@ public class HelloBubblesActivity extends Activity {
 	private void addItems() {
 		adapter.add(new OneComment(true, "Hello bubbles!"));
 
-		for (int i = 0; i < 4; i++) {
-			boolean left = getRandomInteger(0, 1) == 0 ? true : false;
-			int word = getRandomInteger(1, 10);
-			int start = getRandomInteger(1, 40);
-			String words = ipsum.getWords(word, start);
-
-			adapter.add(new OneComment(left, words));
-		}
+//		for (int i = 0; i < 4; i++) {
+//			boolean left = getRandomInteger(0, 1) == 0 ? true : false;
+//			int word = getRandomInteger(1, 10);
+//			int start = getRandomInteger(1, 40);
+//			//String words = ipsum.getWords(word, start);
+//			String words = "Hola borrame";
+//
+//			adapter.add(new OneComment(left, words));
+//		}
+		adapter.add(new OneComment(false, "Hello App"));
+		adapter.add(new OneComment(true, "Erase Me"));
+		adapter.remove(2);
 	}
 
 	private static int getRandomInteger(int aStart, int aEnd) {
