@@ -2,7 +2,6 @@ package com.criptext;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TimerTask;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,40 +9,38 @@ import android.graphics.BitmapFactory;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
+public class ChatArrayAdapter extends ArrayAdapter<SingleChat> {
 
-	private TextView countryName;
-	private List<OneComment> countries = new ArrayList<OneComment>();
+	private TextView chatView;
+	private List<SingleChat> singleChat = new ArrayList<SingleChat>();
 	private LinearLayout wrapper;
 
 	@Override
-	public void add(OneComment object) {
-		countries.add(object);
+	public void add(SingleChat object) {
+		singleChat.add(object);
 		super.add(object);
 	}
 	
 	public void remove(int pos) {
-		countries.remove(pos);
+		singleChat.remove(pos);
 		notifyDataSetChanged();
 	}
 	
-	public DiscussArrayAdapter(Context context, int textViewResourceId) {
+	public ChatArrayAdapter(Context context, int textViewResourceId) {
 		super(context, textViewResourceId);
 	}
 
 	public int getCount() {
-		return this.countries.size();
+		return this.singleChat.size();
 	}
 
-	public OneComment getItem(int index) {
-		return this.countries.get(index);
+	public SingleChat getItem(int index) {
+		return this.singleChat.get(index);
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -52,20 +49,21 @@ public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
 			LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			row = inflater.inflate(R.layout.listitem_discuss, parent, false);
 		}
-
+		
 		wrapper = (LinearLayout) row.findViewById(R.id.wrapper);
 
-		OneComment coment = getItem(position);
+		SingleChat coment = getItem(position);
 
-		countryName = (TextView) row.findViewById(R.id.comment);
+		chatView = (TextView) row.findViewById(R.id.comment);
 
-		countryName.setText(coment.comment);
+		chatView.setText(coment.comment);
 
-		countryName.setBackgroundResource(coment.left ? R.drawable.bubble_yellow : R.drawable.bubble_green);
+		chatView.setBackgroundResource(coment.left ? R.drawable.bubble_yellow : R.drawable.bubble_green);
 		wrapper.setGravity(coment.left ? Gravity.LEFT : Gravity.RIGHT);
 
 		return row;
 	}
+	
 
 	public Bitmap decodeToBitmap(byte[] decodedByte) {
 		return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);

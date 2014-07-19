@@ -18,6 +18,13 @@
             android:paddingLeft="10dip"
             android:text="Hello bubbles!"
             android:textColor="@android:color/primary_text_light" />
+        <Chronometer android:text="@+id/Chronometer01"
+    android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:id="@+id/layout_orders_list_row_chr_Timer"
+    android:focusable="false" android:focusableInTouchMode="false"
+    android:layout_gravity="center" android:enabled="true">
+</Chronometer>
+      
     </LinearLayout>
 
 </LinearLayout>

@@ -1,10 +1,10 @@
 package com.criptext;
 
-public class OneComment {
+public class SingleChat {
 	public boolean left;
 	public String comment;
 
-	public OneComment(boolean left, String comment) {
+	public SingleChat(boolean left, String comment) {
 		super();
 		this.left = left;
 		this.comment = comment;
