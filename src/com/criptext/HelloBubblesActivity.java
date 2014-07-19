@@ -1,9 +1,11 @@
 package com.criptext;
 
 import java.util.Random;
+import java.util.Timer;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
@@ -47,7 +49,9 @@ public class HelloBubblesActivity extends Activity {
 		});
 
 		addItems();
+		removeItems();
 	}
+	
 
 	private void addItems() {
 		adapter.add(new OneComment(true, "Hello bubbles!"));
@@ -63,9 +67,17 @@ public class HelloBubblesActivity extends Activity {
 //		}
 		adapter.add(new OneComment(false, "Hello App"));
 		adapter.add(new OneComment(true, "Erase Me"));
-		adapter.remove(2);
 	}
-
+	
+	private void removeItems(){
+		final Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+		  public void run() {
+			adapter.remove(adapter.getCount());
+		  }
+		}, 10000);
+	}
+	
 	private static int getRandomInteger(int aStart, int aEnd) {
 		if (aStart > aEnd) {
 			throw new IllegalArgumentException("Start cannot exceed End.");

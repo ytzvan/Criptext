@@ -2,6 +2,7 @@ package com.criptext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 import android.content.Context;
 import android.graphics.Bitmap;
